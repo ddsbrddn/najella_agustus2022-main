@@ -1,0 +1,144 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+
+
+<header class="site-header">
+	{{> site-header}}
+
+</header>
+
+
+<main id="site-main" class="site-main">
+
+
+	<header class="outer gh-hero gh-curve-grey gh-members-head">
+		<div class="inner">
+			<div class="gh-members-head-content">
+				<div class="gh-beta-badge"><span>beta</span></div>
+				<h1 class="gh-mainhead">Turn your audience into a business</h1>
+				<p class="gh-subhead">Use memberships and subscriptions to develop a direct relationship with your
+					audience and generate predictable, recurring revenue to support your work.</p>
+				<div class="gh-btn-group"><a class="gh-btn gh-btn-green" href="/pricing/"><span>Get started
+							now</span></a><a class="gh-btn gh-btn-outline" href="/pricing/"><span>See pricing</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="gh-members-head-diagram"><img src="/content/images/2020/03/members-header-diagram.svg"
+				alt="Members diagram"></div>
+	</header>
+
+	<article class="inner post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+
+
+		<section class="gh-section gh-section-whitegrey gh-section-image-text post-full-content">
+			<div class="inner">
+				<header class="gh-section-head gh-section-head-bigger">
+					<div class="gh-section-head-pre">Integrations</div>
+					<h2>Work with all your existing tools</h2>
+					<p>Explore hundreds of integrations for Ghost to speed up your workflow, or build your own custom
+						integrations with our open source developer SDKs.</p>
+				</header>
+				<div class="gh-image-text-block  ">
+					<div class="gh-image-text-column gh-image-text-img "><img class="gh-image-text-img-main"
+							src="https://ghost.org/static/editor-browser-phone-891b3660d50d8a07628709c3bfef53bd.png"
+							loading="lazy" alt="Ghost"></div>
+					<div class="gh-image-text-column no-header">
+						<p>Ghost has a familiar writing experience and sensible content management. The platform takes
+							care of things like performance SEO, so you can concentrate on writing.</p>
+						<p>The rich editor allows you to do exactly that, while also supporting dynamic cards for when
+							you need to include image galleries, markdown, HTML and more.</p>
+					</div>
+				</div>
+				<div class="gh-image-text-block  gh-image-text-img-right">
+					<div class="gh-image-text-column gh-image-text-img "><img class="gh-image-text-img-main"
+							src="https://marketingplatform.google.com/about/static/images/gmp/enterprise-integration_2x.jpg"
+							alt="Sign up UI"></div>
+					<div class="gh-image-text-column no-header">
+						<p>Develop a direct relationship with your audience and discover who your most devoted readers
+							are with memberships subscriptions.</p>
+						<p>Transform anonymous views into registered members, or even generate sustainable revenue from
+							your work with recurring subscriptions.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="post-full-content">
+			<div class="post-content">
+				{{content}}
+			</div>
+		</section>
+
+		{{!-- Email subscribe form at the bottom of the page --}}
+		{{#if @site.members_enabled}}
+		{{> subscribe-form}}
+		{{/if}}
+
+		{{!--
+            <section class="post-full-comments">
+                If you want to embed comments, this is a good place to do it!
+            </section>
+            --}}
+
+	</article>
+
+</main>
+
+
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+	// NOTE: Scroll performance is poor in Safari
+	// - this appears to be due to the events firing much more slowly in Safari.
+	//   Dropping the scroll event and using only a raf loop results in smoother
+	//   scrolling but continuous processing even when not scrolling
+	$(document).ready(function () {
+		console.log("there must be a way to debug");
+		var nav = document.querySelector('.site-nav-main .site-nav');
+		var feed = document.querySelector('.post-feed');
+		var lastScrollY = window.scrollY;
+		var lastWindowHeight = window.innerHeight;
+		var lastDocumentHeight = $(document).height();
+		var ticking = false;
+
+		function onScroll() {
+			lastScrollY = window.scrollY;
+			requestTick();
+		}
+
+		function onResize() {
+			lastWindowHeight = window.innerHeight;
+			lastDocumentHeight = $(document).height();
+			requestTick();
+		}
+
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(update);
+			}
+			ticking = true;
+		}
+
+		function update() {
+			var trigger = feed.getBoundingClientRect().top + window.scrollY;
+			var progressMax = lastDocumentHeight - lastWindowHeight;
+			// show/hide nav
+			if (lastScrollY >= trigger - 20) {
+				nav.classList.add('fixed-nav-active');
+			} else {
+				nav.classList.remove('fixed-nav-active');
+			}
+			ticking = false;
+		}
+		window.addEventListener('scroll', onScroll, {
+			passive: true
+		});
+		window.addEventListener('resize', onResize, false);
+		update();
+	});
+</script>
+{{/contentFor}}

@@ -1,0 +1,54 @@
+<header class="gh-head">
+    <nav class="gh-navbar inner">
+        <div class="gh-navbar-left">
+
+            <a id="home" class="floating-header-logo gh-navbar-item" href="{{@site.url}}">
+            {{#if @site.icon}}
+            <img src="{{@site.icon}}" alt="{{@site.title}} icon" />
+            {{/if}}
+            <span>{{@site.title}}</span>
+            </a>
+            {{!-- <a class="gh-nav-logo-suffix" href="{{@site.url}}">Blog</a> --}}
+
+            {{navigation}}
+        </div>
+        <div class="gh-navbar-right">
+            <a class="gh-navbar-item" href="/tentang">About</a>
+            <a class="gh-navbar-item" href="/blog">Blog</a>
+
+       
+
+        </div>
+    </nav>
+</header>
+
+    <header class="gh-mobilehead">
+        <nav class="gh-mobilenavbar">
+            <a class="gh-nav-burger" href="#">
+                <div class="hamburger hamburger--collapse" aria-label="Menu">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </a>
+
+        <div class="floating-header-logo">
+            <a class="gh-nav-logo" href="{{@site.url}}">
+                {{#if @site.icon}}
+                <img src="{{@site.icon}}" alt="{{@site.title}} icon" />
+                {{/if}}
+                <span>{{@site.title}}</span>
+            </a>
+
+        </div>
+
+    </nav>
+    <div class="gh-mobilemenu">
+        {{navigation}}
+        <a class="gh-navbar-item" href="/tentang">Tentang Kami</a>
+        <a class="gh-navbar-item" href="/bantuan">Support</a>
+       
+
+
+    </div>
+</header>

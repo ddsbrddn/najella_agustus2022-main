@@ -1,0 +1,216 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+<header class="inner">
+	{{> site-nav}}
+</header>
+
+
+
+
+
+	<header class="outer gh-hero gh-curve-grey gh-members-head">
+		<div class="inner">
+			<div class="gh-members-head-content">
+				{{!-- <div class="gh-beta-badge"><span>beta</span></div> --}}
+				<h1 class="gh-mainhead">{{title}}</h1>
+				<p class="gh-subhead">{{ excerpt }}</p>
+				{{!-- <div class="gh-btn-group"><a class="gh-btn gh-btn-green" href="/pricing/"><span>Get started
+							now</span></a><a class="gh-btn gh-btn-outline" href="/pricing/"><span>See pricing</span></a>
+				</div> --}}
+			</div>
+
+			<div class="gh-members-head-diagram">
+			{{!-- <img src="/content/images/2020/03/members-header-diagram.svg" alt="Members diagram"> --}}
+			{{#if feature_image}}
+            <figure class="kg-card kg-image-card kg-width-full">
+                {{!-- This is a responsive image, it loads different sizes depending on device
+                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{title}}"
+					class="kg-image"
+                />
+            </figure>
+            {{/if}}
+			</div>
+		</div>
+	</header>
+
+	{{!-- <main id="site-main" class="site-main outer gh-section gh-section-white"> --}}
+	<section class="outer gh-section gh-section-white">
+		<article class="outer post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+			<div class="post-full-content gh-section-white">
+				<div class="post-content">
+					{{content}}
+				</div>
+			</div>
+		</article>
+	</section>
+		
+	{{!-- </main> --}}
+
+
+
+
+
+
+
+	<section class="outer gh-section-dr gh-section-dark section4 px-6">
+		<div class="bubble bubble-1"></div>
+		<div class="bubble bubble-2"></div>
+		<div class="bubble bubble-3"></div>
+		<header class="gh-section-head">
+			<div class="gh-features-icon">
+				<svg width="32" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path
+						d="M20.444 9.271A.496.496 0 0 0 20 9h-7.377L14.488.608a.5.5 0 0 0-.895-.399l-10 14A.498.498 0 0 0 4 15h7.377l-1.865 8.392a.5.5 0 0 0 .285.565L10 24a.502.502 0 0 0 .407-.209l10-14a.5.5 0 0 0 .037-.52zM11.021 21.21l1.467-6.602A.498.498 0 0 0 12 14H4.972l8.007-11.21-1.467 6.602A.498.498 0 0 0 12 10h7.028l-8.007 11.21z">
+					</path>
+				</svg>
+
+			</div>
+			<h2 class="site-main-title">What We Do</h2>
+			{{!-- <p>Berikut alasan kenapa kami lebih baik daripada pengembang lainnya.</p> --}}
+		</header>
+		<div class="inner">
+			<div class="gh-grid">
+				<div class="gh-grid-item gh-grid-support"><svg data-cy="support-icon" version="1" viewBox="0 0 24 24">
+						<path
+							d="M23.5 10h-.692C21.987 5.548 18.453 2.014 14 1.191V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.691C5.547 2.014 2.012 5.548 1.19 10H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h.69c.823 4.454 4.357 7.988 8.81 8.809v.691a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-.691c4.453-.821 7.986-4.356 8.808-8.809h.692a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm-1.708 0h-4.674A5.522 5.522 0 0 0 14 6.882V2.208A10.036 10.036 0 0 1 21.792 10zM12 16.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5zM13 1v5.596c-.325-.06-.658-.096-1-.096s-.675.036-1 .096V1h2zm-3 1.208v4.674A5.522 5.522 0 0 0 6.882 10H2.207A10.037 10.037 0 0 1 10 2.208zM1 11h5.596c-.06.325-.096.658-.096 1s.036.675.096 1H1v-2zm1.207 3h4.675A5.522 5.522 0 0 0 10 17.118v4.674A10.032 10.032 0 0 1 2.207 14zM11 23v-5.596c.325.06.658.096 1 .096s.675-.036 1-.096V23h-2zm3-1.208v-4.674A5.522 5.522 0 0 0 17.118 14h4.674A10.03 10.03 0 0 1 14 21.792zM23 13h-5.596c.06-.325.096-.658.096-1s-.036-.675-.096-1H23v2z">
+						</path>
+					</svg>
+					<h3>Brand strategi dan perencanaan  komunikasi</h3>
+					<p>Dengan pengalaman membangun bersama klien-klien, tim kami memiliki pengetahuan dan keahlian. Punya kesadaran. Untuk menyampaikan strategi efektif yang mampu membantu brand anda tampil solid dan sukses.</p>
+					<p><strong>Delivery:</strong> Brand strategy, perencanaan komunikasi, strategi konten, design & development.</p>
+				</div>
+				<div class="gh-grid-item gh-grid-security"><svg data-cy="shield-icon" version="1" viewBox="0 0 24 24">
+						<path
+							d="M21.63 4.537c-.073-.019-7.399-2.017-9.769-4.39a.532.532 0 0 0-.723 0C8.769 2.52 1.443 4.518 1.37 4.537A.5.5 0 0 0 1 5.02c0 8.569.761 15.405 10.326 18.949L11.5 24l.174-.031C21.239 20.425 22 13.589 22 5.02a.5.5 0 0 0-.37-.483zM11.5 22.966C2.817 19.674 2.023 13.601 2.001 5.4c1.497-.429 7.022-2.109 9.499-4.228 2.477 2.119 8.002 3.798 9.499 4.227-.021 8.202-.816 14.275-9.499 17.567zm-.464-16.223L9.732 10H6.5a.5.5 0 0 0-.332.873l2.626 2.337-.99 3.672a.497.497 0 0 0 .482.63.51.51 0 0 0 .308-.105l2.907-2.267 2.907 2.251a.5.5 0 0 0 .788-.526l-.99-3.651 2.627-2.34A.5.5 0 0 0 16.5 10h-3.232l-1.304-3.257c-.15-.38-.778-.38-.928 0zm1.429 3.943a.5.5 0 0 0 .464.314h2.259l-1.878 1.672a.5.5 0 0 0-.149.504l.681 2.51-2.035-1.576a.498.498 0 0 0-.613.001L9.16 15.697l.682-2.526a.5.5 0 0 0-.15-.504L7.814 11h2.257a.5.5 0 0 0 .464-.314l.965-2.411.965 2.411z">
+						</path>
+					</svg>
+					<h3>Social media dan konten</h3>
+					<p>Sosial media merupakan platform penting untuk brand. Bersama  community manager, kerja kolaboratif untuk strategi dan kreatif yang akan membantu anda terhubung dengan audien di-waktu-dan-saat yang tepat.</p>
+					<p><strong>Delivery:</strong> Social content management, tone of voice, content creation, channel strategy.</p>
+				</div>
+				<div class="gh-grid-item gh-grid-domains"><svg data-cy="heart-circle-icon" version="1"
+						viewBox="0 0 24 24">
+						<path
+							d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm0 23C5.935 23 1 18.065 1 12S5.935 1 12 1s11 4.935 11 11-4.935 11-11 11zm2.777-15.5c-.951 0-2.071.492-2.777 1.785C11.294 7.992 10.174 7.5 9.223 7.5 7.639 7.5 6 8.823 6 11.037c0 3.181 5.473 7.198 5.706 7.367a.497.497 0 0 0 .588 0c.233-.169 5.706-4.186 5.706-7.367C18 8.823 16.361 7.5 14.777 7.5zM12 17.376c-1.63-1.246-5-4.252-5-6.339C7 9.449 8.13 8.5 9.223 8.5c1.087 0 1.943.865 2.291 2.313.109.45.863.45.973 0 .347-1.448 1.203-2.313 2.29-2.313C15.87 8.5 17 9.449 17 11.037c0 2.084-3.37 5.092-5 6.339z">
+						</path>
+					</svg>
+					<h3>Teknologi dan kode</h3>
+					<p>Teknologi merupakan bagian utama dari segala yang kami lakukan. Kami kombinasikan teknologi terdepan dengan cara-cara inovatif untuk membawa hasil  untuk klien kami.</p>
+
+					<p><strong>Delivery:</strong> Aplikasi mobile - web, program, rich media dan online.</p>
+
+				</div>
+				<div class="gh-grid-item gh-grid-backups"><svg data-cy="sync-icon" version="1" viewBox="0 0 24 24">
+						<path
+							d="M7.239 9.628a.502.502 0 0 0-.704.063l-2.513 3.01a8.342 8.342 0 0 1 1.197-5.372c1.17-1.899 3.048-3.274 5.153-3.772a7.997 7.997 0 0 1 7.836 2.486.5.5 0 0 0 .748-.663 8.99 8.99 0 0 0-8.815-2.796c-2.361.559-4.465 2.097-5.774 4.221a9.355 9.355 0 0 0-1.399 5.036L1.342 9.419a.501.501 0 0 0-.83.558l2.787 4.151c.088.13.231.212.389.221h.026a.5.5 0 0 0 .384-.18l3.205-3.838a.5.5 0 0 0-.064-.703zm16.676 4.093L21.129 9.57a.504.504 0 0 0-.389-.221.494.494 0 0 0-.291.091l-.029.021-.091.067-3.206 3.837a.502.502 0 0 0 .063.705c.213.177.528.15.704-.064l2.421-2.899c.059 3.685-2.549 7.144-6.26 8.02a7.967 7.967 0 0 1-7.465-2.093.5.5 0 1 0-.701.712 8.96 8.96 0 0 0 8.397 2.355c3.983-.94 6.838-4.535 7.025-8.47l1.777 2.648a.505.505 0 0 0 .694.136.5.5 0 0 0 .137-.694zM12.213 8.85c-.667 0-1.295.26-1.767.731a2.503 2.503 0 0 0 0 3.536c.472.472 1.1.732 1.768.732.667 0 1.295-.26 1.767-.732a2.504 2.504 0 0 0 0-3.537 2.486 2.486 0 0 0-1.768-.73zm1.06 3.56c-.567.566-1.555.565-2.12 0a1.502 1.502 0 0 1 1.061-2.561c.4 0 .776.156 1.06.438a1.504 1.504 0 0 1-.001 2.123z">
+						</path>
+					</svg>
+					<h3>Strategi marketing dan periklanan</h3>
+					<p>Gapai dan terhubung dengan customer saat mereka cari bisnis seperti anda.</p>
+					<p><strong>Delivery:</strong> SEO, Google Ads, Facebook & Instagram Ads</p>
+				</div>
+				<div class="gh-grid-item gh-grid-developers"><svg data-cy="terminal-icon" version="1"
+						viewBox="0 0 24 24">
+						<path
+							d="M21.5 1.993h-19a2.502 2.502 0 0 0-2.5 2.5v14c0 1.379 1.121 2.5 2.5 2.5h19c1.379 0 2.5-1.121 2.5-2.5v-14c0-1.379-1.121-2.5-2.5-2.5zm-19 1h19c.827 0 1.5.673 1.5 1.5v2.5H1v-2.5c0-.827.673-1.5 1.5-1.5zm19 17h-19c-.827 0-1.5-.673-1.5-1.5v-10.5h22v10.5c0 .827-.673 1.5-1.5 1.5z">
+						</path>
+						<circle cx="4" cy="4.993" r="1"></circle>
+						<circle cx="7" cy="4.993" r="1"></circle>
+						<circle cx="10" cy="4.993" r="1"></circle>
+						<path
+							d="M5.853 11.14a.5.5 0 0 0-.707.707l2.147 2.147-2.146 2.146a.5.5 0 0 0 .706.707l2.5-2.5a.5.5 0 0 0 0-.707l-2.5-2.5zm9.647 2.853h-4a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z">
+						</path>
+					</svg>
+					<h3>Total developer control</h3>
+					<p>Integrasi API, atau fungsional. Tim kami punya keahlian & pengalaman. Tidak ada batasan untuk fitur yang anda ingin kembangkan.</p>
+					<p><strong>Delivery:</strong> API, Dev-ops, Cloud, Tools</p>
+				</div>
+				<div class="gh-grid-item gh-grid-enterprise"><svg data-cy="satellite-icon" version="1"
+						viewBox="0 0 24 24">
+						<path
+							d="M23.854 15.646L19.5 11.293V7.45c1.14-.233 2-1.242 2-2.45 0-1.378-1.121-2.5-2.5-2.5-1.208 0-2.217.86-2.449 2h-3.844L8.354.147a.5.5 0 0 0-.707 0A11.388 11.388 0 0 0 4.278 8.25c0 2.659.909 5.185 2.578 7.228L.124 23.172A.498.498 0 0 0 .5 24h14a.5.5 0 0 0 .376-.83l-3.972-4.539a11.391 11.391 0 0 0 12.949-2.279A.492.492 0 0 0 24 16a.504.504 0 0 0-.146-.354zM16.457 8.25l1.166-1.167c.262.174.558.301.877.366v2.844L16.457 8.25zM19 3.5c.827 0 1.5.673 1.5 1.5s-.673 1.5-1.5 1.5c-.413 0-.788-.168-1.06-.44v-.001A1.491 1.491 0 0 1 17.5 5c0-.827.673-1.5 1.5-1.5zm-2.449 2c.065.318.192.614.366.876L15.75 7.543 13.707 5.5h2.844zM1.602 23L7.5 16.259 13.398 23H1.602zm14.148-4.279a10.397 10.397 0 0 1-7.396-3.075A10.394 10.394 0 0 1 5.278 8.25c0-2.621.966-5.099 2.73-7.034l4.139 4.138 6.499 6.498.002.002 4.137 4.137a10.385 10.385 0 0 1-7.035 2.73z">
+						</path>
+					</svg>
+					<h3>Konsep kreatif dan integrasi</h3>
+					<p>Nasehat digital, tools & brain storm untuk kampanye lintas platform. Kami berpikir kreatif dan lakukan. </p>
+					<p><strong>Delivery:</strong> Desain, Integrasi kampanye, messaging, copywriting</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+{{/post}}
+
+{{!-- {{> site-header}} --}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+	// NOTE: Scroll performance is poor in Safari
+	// - this appears to be due to the events firing much more slowly in Safari.
+	//   Dropping the scroll event and using only a raf loop results in smoother
+	//   scrolling but continuous processing even when not scrolling
+	$(document).ready(function () {
+		console.log("there must be a way to debug");
+		var nav = document.querySelector('.site-nav-main .site-nav');
+		var feed = document.querySelector('.post-feed');
+		var lastScrollY = window.scrollY;
+		var lastWindowHeight = window.innerHeight;
+		var lastDocumentHeight = $(document).height();
+		var ticking = false;
+
+		function onScroll() {
+			lastScrollY = window.scrollY;
+			requestTick();
+		}
+
+		function onResize() {
+			lastWindowHeight = window.innerHeight;
+			lastDocumentHeight = $(document).height();
+			requestTick();
+		}
+
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(update);
+			}
+			ticking = true;
+		}
+
+		function update() {
+			var trigger = feed.getBoundingClientRect().top + window.scrollY;
+			var progressMax = lastDocumentHeight - lastWindowHeight;
+			// show/hide nav
+			if (lastScrollY >= trigger - 20) {
+				nav.classList.add('fixed-nav-active');
+			} else {
+				nav.classList.remove('fixed-nav-active');
+			}
+			ticking = false;
+		}
+		window.addEventListener('scroll', onScroll, {
+			passive: true
+		});
+		window.addEventListener('resize', onResize, false);
+		update();
+	});
+</script>
+{{/contentFor}}

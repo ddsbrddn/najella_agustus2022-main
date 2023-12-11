@@ -1,0 +1,15 @@
+routes:
+  /: home
+  /features/: custom-featured-program
+  /about/team/: team
+  /signup/: members/signup
+  /signin/: members/signin
+  /account/: members/account
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
